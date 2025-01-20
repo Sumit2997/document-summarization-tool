@@ -1,0 +1,40 @@
+#dropZone {
+  background-color: #f8f9fa;
+  cursor: pointer;
+  text-align: center;
+  padding: 20px;
+  border: 2px dashed #007bff;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#dropZone.dragging {
+  background-color: #e0f7fa;
+  border-color: #007bff;
+}
+
+#filePreview {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+#pdfPreview {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+#results {
+  position: relative;
+}
+
+#loadingSpinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}

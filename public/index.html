@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Summarization</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="bg-primary text-white py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="h4 mb-0">Document Summarization Tool</h1>
+      </div>
+    </header>
+
+    <div class="container mt-5 mb-5">
+      <div class="row">
+        <!-- Left Column: File Upload and Preview -->
+        <div class="col-md-4">
+          <div class="card shadow-lg mb-3">
+            <div class="card-header bg-primary text-white text-center">
+              <h5>Upload File</h5>
+            </div>
+            <div class="card-body">
+              <form id="uploadForm" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="fileInput" class="form-label">
+                    <b>Select a File (PDF/Image)</b>
+                  </label>
+                  <div id="dropZone">
+                    <p id="dropZoneText">
+                      Drag & Drop your file here, or click to select
+                    </p>
+                    <input
+                      type="file"
+                      id="fileInput"
+                      name="file"
+                      accept=".pdf,image/*"
+                      class="form-control d-none"
+                    />
+                  </div>
+                  <small
+                    id="fileName"
+                    class="text-success d-block mt-2"
+                  ></small>
+                </div>
+
+                <div class="container d-flex align-items-center mb-3">
+                  <label for="summary_length" class="form-label mb-0">
+                    <b>Summary Length:</b>
+                  </label>
+                  <span class="mx-2">Small</span>
+                  <input
+                    type="range"
+                    class="summary-range mx-2"
+                    min="1"
+                    max="5"
+                    step="1"
+                    id="summary_length"
+                  />
+                  <span class="mx-2">Large</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                  Upload and Summarize
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- File Preview -->
+          <div id="previewContainer" class="mt-4 d-none">
+            <h6>File Preview:</h6>
+            <iframe id="pdfPreview" class="d-none"></iframe>
+            <img id="filePreview" src="#" alt="Preview" class="d-none" />
+          </div>
+        </div>
+
+        <!-- Right Column: Results Display -->
+        <div class="col-md-8">
+          <div class="card shadow-lg">
+            <div class="card-header bg-success text-white text-center">
+              <h5>Results</h5>
+            </div>
+            <div class="card-body" id="results">
+              <div id="loadingSpinner" class="my-2">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+              <div id="responseMessage"></div>
+              <p id="placeholderMessage" class="text-muted text-center mh-6">
+                Please select a file to see results.
+              </p>
+              <div id="outputContent" class="d-none">
+                <h5>Original Text:</h5>
+                <pre
+                  id="originalText"
+                  style="
+                    background-color: #f8f9fa;
+                    padding: 10px;
+                    border-radius: 5px;
+                  "
+                ></pre>
+                <h5 class="mt-4">Summary:</h5>
+                <p
+                  id="summaryText"
+                  style="
+                    background-color: #f8f9fa;
+                    padding: 10px;
+                    border-radius: 5px;
+                  "
+                ></p>
+                <h5 class="mt-4">Key Points:</h5>
+                <ul id="keyPointsList"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
